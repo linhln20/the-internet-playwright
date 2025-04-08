@@ -11,9 +11,6 @@ export class CheckboxesPage {
         this.checkbox2 = page.locator('form input[type="checkbox"]').nth(1);
     }
 
-    async navigate() {
-        await this.page.goto('https://the-internet.herokuapp.com/checkboxes');
-    }
     // First checkbox methods
     async isFirstCheckboxChecked() {
         return await this.checkbox1.isChecked();

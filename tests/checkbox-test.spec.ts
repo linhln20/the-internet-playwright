@@ -2,12 +2,11 @@ import { test, expect } from '@playwright/test';
 import { CheckboxesPage } from '../pages/checkbox-page';
 
 let checkboxesPage: CheckboxesPage;
-
+const URL = 'https://the-internet.herokuapp.com/checkboxes';
 test.beforeEach(async ({ page }) => {
     // Navigate to URL before each test
-    await checkboxesPage.navigate();
+    await page.goto(URL);
     checkboxesPage = new CheckboxesPage(page);
-
 });
 
 test.describe('Checkboxes Page', () => {
@@ -28,17 +27,17 @@ test.describe('Checkboxes Page', () => {
     });
 
     test('Check the second checkbox if not already checked', async () => {
-        // If the first checkbox is already checked, uncheck it first
+        // If the second checkbox is already checked, uncheck it first
         if (await checkboxesPage.isSecondCheckboxChecked()) {
             await checkboxesPage.uncheckSecondCheckbox();
         }
-        // Verify that the first checkbox is not checked
+        // Verify that the second checkbox is not checked
         expect(await checkboxesPage.isSecondCheckboxChecked()).toBeFalsy();
 
-        // Check checkbox1
+        // Check checkbox2
         await checkboxesPage.checkSecondCheckbox();
 
-        // Verify that the first checkbox is checked 
+        // Verify that the second checkbox is checked 
         expect(await checkboxesPage.isSecondCheckboxChecked()).toBeTruthy();
     });
 });
