@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
 
 test.describe('Checkboxes Page', () => {
 
-    test('Check the first checkbox if not already checked', async () => {
+    test('Verify able to check the first checkbox', async () => {
         // If the first checkbox is already checked, uncheck it first
         if (await checkboxesPage.isFirstCheckboxChecked()) {
             await checkboxesPage.uncheckFirstCheckbox();
@@ -26,7 +26,7 @@ test.describe('Checkboxes Page', () => {
         expect(await checkboxesPage.isFirstCheckboxChecked()).toBeTruthy();
     });
 
-    test('Check the second checkbox if not already checked', async () => {
+    test('Verify able to check the second checkbox', async () => {
         // If the second checkbox is already checked, uncheck it first
         if (await checkboxesPage.isSecondCheckboxChecked()) {
             await checkboxesPage.uncheckSecondCheckbox();
