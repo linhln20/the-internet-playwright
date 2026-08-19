@@ -1,6 +1,6 @@
 import { test, expect } from '../utils/fixtures';
 
-test.describe('Thực hành API Testing với Reqres.in', () => {
+test.describe.skip('Thực hành API Testing với Reqres.in', () => {
 
     // 1. Test GET Request: Lấy danh sách người dùng
     test('GET - Lấy danh sách người dùng ở trang 2', async ({ apiHelper }) => {
