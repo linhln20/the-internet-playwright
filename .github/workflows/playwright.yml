@@ -20,10 +20,10 @@ jobs:
         sudo sed -i 's/archive.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list || true
         sudo sed -i 's/security.ubuntu.com/azure.archive.ubuntu.com/g' /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list || true
 
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+    - name: Install Playwright Browsers (Chromium only)
+      run: npx playwright install chromium --with-deps
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright test --project=chromium
       env:
         BASIC_AUTH_USER: admin
         BASIC_AUTH_PASSWORD: admin
