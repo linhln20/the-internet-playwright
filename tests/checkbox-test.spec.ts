@@ -1,43 +1,41 @@
-import { test, expect } from '@playwright/test';
-import { CheckboxesPage } from '../pages/checkbox-page';
+import { test, expect } from '../utils/fixtures';
 
-let checkboxesPage: CheckboxesPage;
 const URL = 'https://the-internet.herokuapp.com/checkboxes';
-test.beforeEach(async ({ page }) => {
-    // Navigate to URL before each test
-    await page.goto(URL);
-    checkboxesPage = new CheckboxesPage(page);
+
+test.beforeEach(async ({ checkboxesPage }) => {
+    // We can use base page methods now
+    await checkboxesPage.goto(URL);
 });
 
 test.describe('Checkboxes Page', () => {
 
-    test('Verify able to check the first checkbox', async () => {
+    test('Verify able to check the first checkbox', async ({ checkboxesPage }) => {
         // If the first checkbox is already checked, uncheck it first
-        if (await checkboxesPage.isFirstCheckboxChecked()) {
-            await checkboxesPage.uncheckFirstCheckbox();
+        if (await checkboxesPage.isCheckboxCheckedByIndex(0)) {
+            await checkboxesPage.uncheckCheckboxByIndex(0);
         }
         // Verify that the first checkbox is not checked
-        expect(await checkboxesPage.isFirstCheckboxChecked()).toBeFalsy();
+        expect(await checkboxesPage.isCheckboxCheckedByIndex(0)).toBeFalsy();
 
         // Check checkbox1
-        await checkboxesPage.checkFirstCheckbox();
+        await checkboxesPage.checkCheckboxByIndex(0);
 
         // Verify that the first checkbox is checked 
-        expect(await checkboxesPage.isFirstCheckboxChecked()).toBeTruthy();
+        expect(await checkboxesPage.isCheckboxCheckedByIndex(0)).toBeTruthy();
     });
 
-    test('Verify able to check the second checkbox', async () => {
+    test('Verify able to check the second checkbox', async ({ checkboxesPage }) => {
         // If the second checkbox is already checked, uncheck it first
-        if (await checkboxesPage.isSecondCheckboxChecked()) {
-            await checkboxesPage.uncheckSecondCheckbox();
+        if (await checkboxesPage.isCheckboxCheckedByIndex(1)) {
+            await checkboxesPage.uncheckCheckboxByIndex(1);
         }
         // Verify that the second checkbox is not checked
-        expect(await checkboxesPage.isSecondCheckboxChecked()).toBeFalsy();
+        expect(await checkboxesPage.isCheckboxCheckedByIndex(1)).toBeFalsy();
 
         // Check checkbox2
-        await checkboxesPage.checkSecondCheckbox();
+        await checkboxesPage.checkCheckboxByIndex(1);
 
         // Verify that the second checkbox is checked 
-        expect(await checkboxesPage.isSecondCheckboxChecked()).toBeTruthy();
+        expect(await checkboxesPage.isCheckboxCheckedByIndex(1)).toBeTruthy();
     });
 });

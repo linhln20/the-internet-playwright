@@ -8,6 +8,6 @@ The Internet (https://the-internet.herokuapp.com/) is the GitHub automation prac
 I finished this POM automation project with Selenium Java (https://github.com/linhln20/selenium-java). I continue practicing with Playwright, the same test cases at Selenium Java.
 
 I am serious about becoming a skilled and reliable tester; I am trying to improve my skills daily with automation tools like Playwright.
-I developed this project with ChatGTP support.
+I developed this project with Antigravity support.
 
 I'll update the special cases if I catch them in the future.
