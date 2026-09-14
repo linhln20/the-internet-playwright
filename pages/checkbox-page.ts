@@ -42,4 +42,20 @@ export class CheckboxesPage extends BasePage {
             await checkbox.uncheck();
         }
     }
+
+    /**
+     * Retrieves the total quantity of checkboxes present within the form.
+     * @returns A promise that resolves to the total number of checkboxes.
+     */
+    async getTotalCheckboxesCount(): Promise<number> {
+        return await this.checkboxes.count();
+    }
+
+    /**
+     * Retrieves the total quantity of currently checked checkboxes.
+     * @returns A promise that resolves to the number of checked checkboxes.
+     */
+    async getCheckedCheckboxesCount(): Promise<number> {
+        return await this.page.locator('form input[type="checkbox"]:checked').count();
+    }
 }
